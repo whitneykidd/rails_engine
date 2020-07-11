@@ -18,5 +18,9 @@ describe 'As a visitor' do
     expect(json[:data][1][:type]).to eq('merchant')
     expect(json[:data][1][:id]).to eq(merchants[1].id.to_s)
     expect(json[:data][1][:attributes][:name]).to eq(merchants[1].name)
+
+    expect(json[:data][2][:type]).to eq('merchant')
+    expect(json[:data][2][:id]).to eq(merchants[2].id.to_s)
+    expect(json[:data][2][:attributes][:name]).to eq(merchants[2].name)
   end
 end
