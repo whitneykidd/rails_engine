@@ -1,14 +1,22 @@
 require 'rails_helper'
 
-describe 'Merchants API' do
-  it 'sends a list of merchants' do
-    create_list(:merchant, 3)
+describe 'As a visitor' do
+  it 'can get all merchants' do
+    merchants = create_list(:merchant, 3)
 
     get '/api/v1/merchants'
 
+    json = JSON.parse(response.body, symbolize_names: true)
     expect(response).to be_successful
-
-    merchants = JSON.parse(response.body)
-    expect(merchants.count).to eq(3)
+    # binding.pry
+    expect(json[:data].length).to eq(3)
+    
+    expect(json[:data][0][:type]).to eq('merchant')
+    expect(json[:data][0][:id]).to eq(merchants[0].id.to_s)
+    expect(json[:data][0][:attributes][:name]).to eq(merchants[0].name)
+    
+    expect(json[:data][1][:type]).to eq('merchant')
+    expect(json[:data][1][:id]).to eq(merchants[1].id.to_s)
+    expect(json[:data][1][:attributes][:name]).to eq(merchants[1].name)
   end
 end
