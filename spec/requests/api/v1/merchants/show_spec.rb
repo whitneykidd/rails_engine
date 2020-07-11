@@ -2,13 +2,16 @@ require 'rails_helper'
 
 describe 'Merchant Show Page' do
   it "can get one item by its id" do
-    id = create(:merchant).id
+    merchant = create(:merchant)
 
-    get "/api/v1/merchants/#{id}"
+    get "/api/v1/merchants/#{merchant.id}"
 
-    merchant = JSON.parse(response.body)
-    binding.pry
+    json = JSON.parse(response.body, symbolize_names: true)
+
     expect(response).to be_successful
-    expect(merchant["id"]).to eq(id)
+       
+    expect(json[:data][:type]).to eq('merchant')
+    expect(json[:data][:id]).to eq(merchant.id.to_s)
+    expect(json[:data][:attributes][:name]).to eq(merchant.name)
   end
 end
