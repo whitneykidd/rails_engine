@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe 'Merchant Show Page' do
-  it "can get one item by its id" do
+  it "can get one merchant by its id" do
     merchant = create(:merchant)
 
     get "/api/v1/merchants/#{merchant.id}"
