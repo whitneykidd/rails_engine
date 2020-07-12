@@ -7,12 +7,14 @@ describe 'Merchant Index Item Relationship' do
 
     create(:item, merchant_id: merchant1.id)
     create(:item, merchant_id: merchant1.id)
+    create(:item, merchant_id: merchant1.id)
     create(:item, merchant_id: merchant2.id)
 
     get "/api/v1/merchants/#{merchant1.id}/items"
+    
     json = JSON.parse(response.body, symbolize_names: true)
 
     expect(response).to be_successful
-    expect(json[:data][0].count).to eq(2)
+    expect(json[:data].first.count).to eq(3)
   end
 end
