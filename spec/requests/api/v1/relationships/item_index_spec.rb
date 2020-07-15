@@ -7,7 +7,7 @@ describe 'Item Index Merchant Relationship' do
     item = create(:item, merchant_id: merchant1.id)
 
     get "/api/v1/items/#{item.id}/merchant"
-    
+
     json = JSON.parse(response.body, symbolize_names: true)
 
     expect(response).to be_successful

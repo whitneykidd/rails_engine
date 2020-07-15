@@ -8,4 +8,4 @@ class Api::V1::Merchants::SearchesController < ApplicationController
     merchants = Search.find_by_name(Merchant, params[:name])
     render json: MerchantSerializer.new(merchants).serialized_json
   end
-end 
+end

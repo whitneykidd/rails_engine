@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe 'Item Show' do
-  it "can get one item by its id" do
+  it 'can get one item by its id' do
     item = create(:item)
 
     get "/api/v1/items/#{item.id}"
@@ -9,7 +9,7 @@ describe 'Item Show' do
     json = JSON.parse(response.body, symbolize_names: true)
 
     expect(response).to be_successful
-       
+
     expect(json[:data][:type]).to eq('item')
     expect(json[:data][:id]).to eq(item.id.to_s)
     expect(json[:data][:attributes][:name]).to eq(item.name)

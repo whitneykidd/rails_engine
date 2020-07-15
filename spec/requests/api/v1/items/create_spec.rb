@@ -1,11 +1,11 @@
 require 'rails_helper'
 
 describe 'Item Create' do
-  it "can create a new item" do
+  it 'can create a new item' do
     merchant = create(:merchant)
     item = build(:item, merchant: merchant)
 
-    post "/api/v1/items", params: item.attributes
+    post '/api/v1/items', params: item.attributes
 
     json = JSON.parse(response.body, symbolize_names: true)
     last_item = Item.last
