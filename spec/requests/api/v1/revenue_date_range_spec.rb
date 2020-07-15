@@ -34,6 +34,6 @@ describe 'As a user' do
 
     json = JSON.parse(response.body, symbolize_names: true)
 
-    expect(json[:data][:attributes]).to eq("11.0")
+    expect(json[:data][:attributes][:revenue]).to eq("10.0")
   end
 end

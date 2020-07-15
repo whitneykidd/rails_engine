@@ -6,7 +6,7 @@ class Merchant < ApplicationRecord
 
   validates :name, presence: true
 
-  def self.most_revenue(limit = 10)
+  def self.most_revenue(limit)
     select("merchants.*, \
       SUM(invoice_items.quantity * invoice_items.unit_price) AS revenue")
       .joins(invoices: [:invoice_items, :transactions])
@@ -16,7 +16,7 @@ class Merchant < ApplicationRecord
       .limit(limit)
   end
 
-  def self.most_items_sold(limit = 10)
+  def self.most_items_sold(limit)
     select('merchants.*, SUM(invoice_items.quantity) AS items_sold')
       .joins(invoices: [:invoice_items, :transactions])
       .merge(Transaction.where(result: 'success'))
