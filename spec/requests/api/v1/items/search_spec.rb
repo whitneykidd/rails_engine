@@ -24,7 +24,6 @@ describe 'As a user' do
     
     expect(json[:data].length).to eq(2)
     expect(json[:data][0][:type]).to eq('item')
-    expect(json[:data][0][:id]).to eq(item1.id.to_s)
     expect(json[:data][0][:attributes][:name]).to eq(item1.name)
     expect(json[:data][0][:attributes][:description]).to eq(item1.description)
     

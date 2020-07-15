@@ -23,11 +23,9 @@ describe 'As a user' do
     
     expect(json[:data].length).to eq(2)
     expect(json[:data][0][:type]).to eq('merchant')
-    expect(json[:data][:id][0]).to eq(merchant1.id.to_s)
     expect(json[:data][0][:attributes][:name]).to eq(merchant1.name)
     
     expect(json[:data][1][:type]).to eq('merchant')
-    expect(json[:data][:id][1]).to eq(merchant1.id.to_s)
-    expect(json[:data][1][:attributes][:name]).to eq(merchant1.name)    
+    expect(json[:data][1][:attributes][:name]).to eq(merchant2.name)    
   end
 end
