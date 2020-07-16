@@ -22,7 +22,7 @@ RSpec.describe 'User' do
 
     create(:invoice_item, item: item2, quantity: 2, unit_price: 1, invoice: invoice2)
     create(:invoice_item, item: item2, quantity: 2, unit_price: 1, invoice: invoice2)
-    
+
     create(:invoice_item, item: item1, quantity: 1, unit_price: 1, invoice: invoice3)
     create(:invoice_item, item: item1, quantity: 1, unit_price: 1, invoice: invoice3)
 

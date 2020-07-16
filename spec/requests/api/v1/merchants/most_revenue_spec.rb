@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'As a user' do
   it 'can return merchants with most revenue' do
-  customer = create(:customer)
+    customer = create(:customer)
 
     merchant1 = create(:merchant)
     merchant2 = create(:merchant)

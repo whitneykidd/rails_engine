@@ -5,9 +5,9 @@ class Api::V1::MerchantsController < ApplicationController
 
   def show
     merchant_ = if params[:item_id]
-        Item.find(params[:item_id]).merchant
-      else
-        Merchant.find(params[:id])
+                  Item.find(params[:item_id]).merchant
+                else
+                  Merchant.find(params[:id])
       end
 
     render json: MerchantSerializer.new(merchant_)

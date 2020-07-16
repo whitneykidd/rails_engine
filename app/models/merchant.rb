@@ -6,22 +6,21 @@ class Merchant < ApplicationRecord
 
   validates :name, presence: true
 
-  def self.most_revenue(limit)
-    select("merchants.*, \
-      SUM(invoice_items.quantity * invoice_items.unit_price) AS revenue")
+  def self.most_revenue(quantity)
+    select("merchants.*, SUM(invoice_items.quantity * invoice_items.unit_price) AS revenue")
       .joins(invoices: [:invoice_items, :transactions])
       .merge(Transaction.where(result: 'success'))
       .group(:id)
       .order('revenue DESC')
-      .limit(limit)
+      .limit(quantity)
   end
 
-  def self.most_items_sold(limit)
+  def self.most_items_sold(quantity)
     select('merchants.*, SUM(invoice_items.quantity) AS items_sold')
       .joins(invoices: [:invoice_items, :transactions])
       .merge(Transaction.where(result: 'success'))
       .group(:id)
       .order('items_sold DESC')
-      .limit(limit)
+      .limit(quantity)
   end
 end

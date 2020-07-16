@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe 'Merchant Update' do
-  it "can update a merchant" do
+  it 'can update a merchant' do
     merchant = create(:merchant)
     updated_merchant = build(:merchant)
 

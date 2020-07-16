@@ -10,11 +10,11 @@ describe 'As a visitor' do
     expect(response).to be_successful
     # binding.pry
     expect(json[:data].length).to eq(3)
-    
+
     expect(json[:data][0][:type]).to eq('merchant')
     expect(json[:data][0][:id]).to eq(merchants[0].id.to_s)
     expect(json[:data][0][:attributes][:name]).to eq(merchants[0].name)
-    
+
     expect(json[:data][1][:type]).to eq('merchant')
     expect(json[:data][1][:id]).to eq(merchants[1].id.to_s)
     expect(json[:data][1][:attributes][:name]).to eq(merchants[1].name)

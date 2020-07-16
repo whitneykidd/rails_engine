@@ -25,15 +25,15 @@ describe 'As a user' do
     create(:invoice_item, item: item4, quantity: 3, unit_price: 1, invoice: invoice3)
     create(:invoice_item, item: item4, quantity: 5, unit_price: 1, invoice: invoice4)
 
-    create(:transaction, invoice: invoice1, result:'success')
-    create(:transaction, invoice: invoice2, result:'success')
-    create(:transaction, invoice: invoice3, result:'success')
-    create(:transaction, invoice: invoice4, result:'failed')
+    create(:transaction, invoice: invoice1, result: 'success')
+    create(:transaction, invoice: invoice2, result: 'success')
+    create(:transaction, invoice: invoice3, result: 'success')
+    create(:transaction, invoice: invoice4, result: 'failed')
 
     get api_v1_revenue_path(start: '2020-07-02', end: '2020-07-03')
 
     json = JSON.parse(response.body, symbolize_names: true)
 
-    expect(json[:data][:attributes][:revenue]).to eq("10.0")
+    expect(json[:data][:attributes][:revenue]).to eq('10.0')
   end
 end

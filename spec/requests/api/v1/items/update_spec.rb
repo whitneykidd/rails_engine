@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe 'Item Update' do
-  it "can update a item" do
+  it 'can update a item' do
     item = create(:item)
     updated_item = build(:item, merchant: item.merchant)
 
